@@ -48,7 +48,7 @@ export const deleteCategoryService = async (id) => {
       }
     }
 
-    await deleteCategoryById()
+    await deleteCategoryById(id)
   } catch (error) {
     throw new Error(error.message);
   }

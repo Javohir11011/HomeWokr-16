@@ -1,5 +1,5 @@
 import { pool } from "../databases/index.js";
-import { createProductModel, findProductById, updateProductById } from "../model/product.model.js";
+import { createProductModel, findProductById, updateProductById, deleteProductById} from "../model/product.model.js";
 
 export const createProductService = async (product) => {
   try {
@@ -36,13 +36,11 @@ export const updateProduct = async (product, id) => {
   }
 };
 
-
-
 export const deleteProduct = async (id) => {
   try {
     const product = await findProductById(id);
 
-    if(product.length ===0){
+    if(product.length === 0){
       return {
         error:true,
         message:"PRODUCT not found"

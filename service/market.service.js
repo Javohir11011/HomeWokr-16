@@ -1,4 +1,4 @@
-import { createMarketModel } from "../model/index.js";
+import { createMarketModel, deleteMarketById, findMarketById, updateMarketById, } from "../model/index.js";
 
 export const createMarketService = async (market) => {
   try {
@@ -11,7 +11,7 @@ export const createMarketService = async (market) => {
 
 export const findMarketService = async (id) => {
   try {
-    const result = await findProductById(id);
+    const result = await findMarketById(id);
     return result;
   } catch (error) {
     throw new Error(error.message);
@@ -20,14 +20,14 @@ export const findMarketService = async (id) => {
 
 export const updateMarketService = async (product, id) => {
   try {
-    const oldProduct = await findProductById(id);
+    const oldProduct = await findMarketById(id);
 
     const newProduct = {
       ...oldProduct[0],
       ...product,
     };
 
-    const result = await updateProductById(newProduct, id);
+    const result = await updateMarketById(newProduct, id);
 
     return result;
   } catch (error) {
@@ -39,16 +39,16 @@ export const updateMarketService = async (product, id) => {
 
 export const deleteMarketService = async (id) => {
   try {
-    const product = await findProductById(id);
+    const product = await findMarketById(id);
 
-    if(product.length ===0){
+    if(product.length === 0){
       return {
         error:true,
         message:"PRODUCT not found"
       }
     }
 
-    await deleteProductById()
+    await deleteMarketById(id)
   } catch (error) {
     throw new Error(error.message);
   }

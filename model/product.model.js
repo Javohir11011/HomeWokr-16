@@ -86,7 +86,6 @@ export const deleteProductById = async (id) => {
         `,
       [id]
     );
-
     return result.rows;
   } catch (error) {
     throw new Error(error);
