@@ -36,6 +36,16 @@ export const findMarketById = async (id) => {
     throw new Error(error);
   }
 };
+export const searchMarket = async () => {
+  try {
+    const result = await pool.query(
+      `SELECT * FROM market`);
+
+    return result.rows;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 
 export const updateMarketById= async (market, id) => {

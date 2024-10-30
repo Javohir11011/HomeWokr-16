@@ -1,4 +1,4 @@
-import { createMarketModel, deleteMarketById, findMarketById, updateMarketById, } from "../model/index.js";
+import { createMarketModel, deleteMarketById, findMarketById, searchMarket, updateMarketById, } from "../model/index.js";
 
 export const createMarketService = async (market) => {
   try {
@@ -9,6 +9,15 @@ export const createMarketService = async (market) => {
   }
 };
 
+export const  getSearchMarketService = async () => {
+  try {
+    const result = await searchMarket();
+    console.log(result);
+    return result;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 export const findMarketService = async (id) => {
   try {
     const result = await findMarketById(id);
